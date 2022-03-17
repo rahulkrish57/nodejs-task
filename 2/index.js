@@ -16,7 +16,7 @@ let data = [{
   "product": "HP laptop new",
   "price": "₹39999.99"
 }]
-
+// GET METHOD--------------------------------
 app.get("/", (req,resp) => {
   resp.status(200).json(
     {
@@ -24,7 +24,7 @@ app.get("/", (req,resp) => {
     }
   )
 })
-
+// GET METHOD with params
 app.get("/:id",  (req, res)=> {
 
   //console.log(typeof parseInt(req.params.id)) // instead of parseInt we can use + or ~~ no need to use ()
@@ -41,6 +41,8 @@ app.get("/:id",  (req, res)=> {
   }
   
 })
+
+// POST METHOD -----------------------------------
 app.post("/create-product/:id", (req, res)=> {
 
 
@@ -52,6 +54,7 @@ app.post("/create-product/:id", (req, res)=> {
   })
 })
 
+// PUT METHOD ----------------------------------------
 app.put("/update-product/:id", (req, res)=> {
  // console.log(req);
   let isPresent = data.find((data)=> data.id == req.params.id)
@@ -81,6 +84,7 @@ app.put("/update-product/:id", (req, res)=> {
   }
 })
 
+// DELETE METHOD --------------------------------------
 app.delete("/delete-product/:id", (req, res)=> {
   // console.log(req);
    let isPresent = data.find((data)=> data.id == req.params.id)
