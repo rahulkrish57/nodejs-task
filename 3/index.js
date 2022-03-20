@@ -6,7 +6,7 @@ const app = express();
 
 const mongoClient = mongodb.MongoClient;
 const objectID = mongodb.ObjectId;
-const dbUrl = "mongodb+srv://Rahulkrishnan:i6GgpNPFPXz9uq0m@cluster0.aeltb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const dbUrl = "mongodb+srv:/<Username>:<Password>@cluster0.aeltb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 app.use(express.json());
 
 /*
