@@ -8,9 +8,10 @@ const mongoClient = mongodb.MongoClient;
 const objectID = mongodb.ObjectId;
 const dbUrl = "mongodb+srv://Rahulkrishnan:i6GgpNPFPXz9uq0m@cluster0.aeltb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 app.use(express.json());
-//using .then method
 
 /*
+GET method
+------------using .then method-------
 app.get("/", (req, res) => {
   mongoClient.connect(dbUrl, (err, client) => {
       if(err) throw err;
@@ -26,7 +27,7 @@ app.get("/", (req, res) => {
 })
 */
 
-
+// GET method ------------------------
 
 app.get("/", async (req, res) => {
   try {
@@ -42,6 +43,8 @@ app.get("/", async (req, res) => {
   }
 })
 
+// POST method --------------------------
+
 app.post("/create", async (req, res) => {
   try {
     let client = await mongoClient.connect(dbUrl)
@@ -55,18 +58,7 @@ app.post("/create", async (req, res) => {
 }
 })
 
-app.put("/update/:id", async (req, res) => {
-  try {
-    let client = await mongoClient.connect(dbUrl)
-    let db = client.db('films')
-    // let client = await mongoClient.connect(dbUrl).db('films');
-    await db.collection('data').findOneAndUpdate({_id: objectID(req.params.id)}, {$set: req.body})
-    res.status(200).json({message: "Data updated"})
-    client.close();
-  } catch (error) {
-    res.status(500).json({message: "Internal server error"})
-}
-})
+//PUT method ---------------------------------
 
 app.put("/update/:id", async (req, res) => {
   try {
@@ -80,6 +72,8 @@ app.put("/update/:id", async (req, res) => {
     res.status(500).json({message: "Internal server error"})
 }
 })
+
+// DELETE method -------------------------------
 
 app.delete("/delete/:id", async (req, res) => {
   try {
